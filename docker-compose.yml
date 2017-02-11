@@ -1,0 +1,31 @@
+db:
+  image: mysql
+  volumes:
+    - "./.data/db:/var/lib/mysql"
+  ports:
+    - "3306:3306"
+  environment:
+    MYSQL_ROOT_PASSWORD: root
+    MYSQL_DATABASE: symfony
+    MYSQL_USER: root
+    MYSQL_PASSWORD: root
+
+apache:
+ build: docker/apache
+ ports:
+   - "8080:80"
+ links:
+   - php
+ volumes:
+   - ./:/usr/local/apache2/htdocs
+
+php:
+  build: docker/php-fpm
+  ports:
+    - 9000:9000
+  links:
+    - db
+  volumes:
+    - ./:/usr/local/apache2/htdocs
+  working_dir: /usr/local/apache2/htdocs
+
