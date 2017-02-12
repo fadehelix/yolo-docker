@@ -1,31 +1,29 @@
-db:
-  image: mysql
-  volumes:
-    - "./.data/db:/var/lib/mysql"
-  ports:
-    - "3306:3306"
-  environment:
-    MYSQL_ROOT_PASSWORD: root
-    MYSQL_DATABASE: symfony
-    MYSQL_USER: root
-    MYSQL_PASSWORD: root
+version: "2"
+services:
+  db:
+    image: mysql
+    volumes:
+      - "./.data/db:/var/lib/mysql"
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
 
-apache:
- build: docker/apache
- ports:
-   - "8080:80"
- links:
-   - php
- volumes:
-   - ./:/usr/local/apache2/htdocs
+  apache:
+    build: docker/apache
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/usr/local/apache2/htdocs
 
-php:
-  build: docker/php-fpm
-  ports:
-    - 9000:9000
-  links:
-    - db
-  volumes:
-    - ./:/usr/local/apache2/htdocs
-  working_dir: /usr/local/apache2/htdocs
+  php:
+    build: docker/php-fpm
+    ports:
+      - 9000:9000
+    volumes_from:
+      - apache
+    working_dir: /usr/local/apache2/htdocs
 
