@@ -27,3 +27,13 @@ services:
       - apache
     working_dir: /usr/local/apache2/htdocs
 
+  gulp:
+    build: docker/gulp
+    command: npm start
+    environment:
+      - GULP_DIR=${GULP_DIR}
+    volumes:
+      - "./theme:/app"
+    ports:
+      - "8080:8080"
+    working_dir: /app

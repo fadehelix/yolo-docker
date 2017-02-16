@@ -11,3 +11,9 @@ Composer is already installed in php container
 2. Edit web/app_dev.php, go to line 15 and replace 127.0.0.1 with host address from cmmand above
 
 Repeat this when you want to get access to _web/config.php_ script.
+
+### Use npm
+1. Edit .env and change value of GULP_DIR
+2. 
+
+### Use gulp with sass

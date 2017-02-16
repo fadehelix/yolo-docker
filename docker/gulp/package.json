@@ -1,0 +1,21 @@
+{
+  "name": "Yolo-docker",
+  "author": "Fadehelix",
+  "version": "1.0.0",
+  "description": "Example libraries to use with any project",
+  "scripts": {
+	  "start": "gulp --gulpfile gulpfile.js"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-postcss": "^6.3.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-shell": "0.5.2",
+    "gulp-sourcemaps": "^1.5.2",
+    "merge-stream": "^1.0.0",
+    "node-bourbon": "^4.2.8",
+    "node-neat": "^1.7.2"
+  }
+}
