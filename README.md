@@ -7,7 +7,7 @@ Stack:
 - Apache 2.4
 - PHP 7.0 FPM
 - MySQL
-- ~~Nodejs (with Gulp and SASS preprocessor)~~
+- Nodejs (with Gulp and SASS preprocessor)
 
 I want to keep this as simple and framework-independent as possible.
 
@@ -24,5 +24,8 @@ Repeat this when you want to get access to _web/config.php_ script.
 
 ### Use gulp with sass
 =======
+Before 'docker-compose build':
+1. Edit both _./docker/gulp/package.json_ and _./docker/gulp/gulpfile.js_ in order to fit them to your requirements
+2. In both _./docker-compose.yml_ and _./docker/gulp/Dockerfile_ replace 'theme' folder name with path to your theme.
 ___
 Don't hesistate to create issue/feature request.
