@@ -15,23 +15,19 @@ Stack:
 
 I want to keep this as simple and framework-independent as possible.
 
-How to
----
-### Use yolo-docker
+How to...
+============
+...use yolo-docker
+------------------
 Just clone the repository and run docker-compose build.
 You can use only particular services by remove these not whih you don't need from docker-compose.yml
 
-### Use composer:
+...use composer:
+-----------------
 Composer is already installed in php container, so run `docker-compose exec php bash` and then use composer as normal.
 
-### Get access to app_dev.php:
-1. Check host ip addres from php container: `docker-compose exec php /sbin/ip route|awk '/default/ { print $3  }'`
-2. Edit web/app_dev.php, go to line 15 and replace 127.0.0.1 with host address from cmmand above
-
-Repeat this when you want to get access to _web/config.php_ script.
-
-### Use gulp with sass
-=======
+...use gulp with sass
+-----------------------
 Before 'docker-compose build':
 1. Edit both _./docker/gulp/package.json_ and _./docker/gulp/gulpfile.js_ in order to fit them to your requirements
 2. In both _./docker-compose.yml_ and _./docker/gulp/Dockerfile_ replace 'theme' folder name with path to your theme.
@@ -45,6 +41,15 @@ Default Gulp plugins (you can change it by editing _docker/gulp/gulpfile.js_)
 | gulp-postcss      | some usefeull actions gulp can do on compiled css,   |                                                                                                                                  
 | gulp-sourcemaps   | allow you to inspect scss files in browser inspector |   
 
+
+FAQ
+============
+Symfony: get access to app_dev.php:
+------------------------------------
+1. Check host ip addres from php container: `docker-compose exec php /sbin/ip route|awk '/default/ { print $3  }'`
+2. Edit web/app_dev.php, go to line 15 and replace 127.0.0.1 with host address from cmmand above
+
+Repeat this when you want to get access to _web/config.php_ script.
 ___
 
 Don't hesistate to create issue/feature request.
