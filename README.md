@@ -3,15 +3,14 @@ You Only Learn Once: Docker... wtf?
 TL;DR: Result of learning by making tool I need.
 _Project strongly inspired by https://github.com/maxpou/docker-symfony_
 
-Stack:
+List of available services (each has its own container):
 
-|     Service   | Version |
-|---------------|---------|
-|     Apache    |   2.4   |
-|      PHP      |   7.0   |
-|      MySQL    |   5.7   |
-|      Node     |   7.5   |
-|      Gulp     |   3.9   |
+|     Service   | Version |  Additions   |
+|---------------|---------|------------- |
+|     Apache    |   2.4   |              |
+|      PHP      |   7.0   |              |
+|      MySQL    |   5.7   |              |
+|      Node     |   7.5   |  Gulp 3.9    |
 
 I want to keep this as simple and framework-independent as possible.
 
