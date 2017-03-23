@@ -43,20 +43,21 @@ Default Gulp plugins (you can change it by editing _docker/gulp/gulpfile.js_)
 
 FAQ
 ============
-Symfony: get access to app_dev.php:
-------------------------------------
+#### Symfony: get access to app_dev.php:
 1. Check host ip addres from php container: `docker-compose exec php /sbin/ip route|awk '/default/ { print $3  }'`
 2. Edit web/app_dev.php, go to line 15 and replace 127.0.0.1 with host address from cmmand above
 
 Repeat this when you want to get access to _web/config.php_ script.
 
-I want to install php extension without rebuild php container
---------------------------------------------------------------
+#### I want to install php extension without rebuild php container
 Let's install mysqli extension from inside the container:
 ```
 docker-compose exec php bash
 docker-php-ext-install mysqli
 ```
+#### Dump sql database
+``` $ docker-compose exec db mysqldump -uusername -puserpassword dbname > backup.sql```
+
 ___
 
 Don't hesistate to create issue/feature request.
