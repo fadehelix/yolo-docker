@@ -16,16 +16,14 @@ I want to keep this as simple and framework-independent as possible.
 
 How to...
 ============
-...use yolo-docker
-------------------
-Just clone the repository and run docker-compose build.
-You can use only particular services by remove these not whih you don't need from docker-compose.yml
+### use yolo-docker
+Just clone the repository and run `$ docker-compose build` command.   
+In addition you probably would `rm -rf .git` to work with your own repository. 
 
-...use composer:
------------------
+### use composer
 Composer is already installed in php container, so run `docker-compose exec php bash` and then use composer as normal.
 
-...use gulp with sass
+### use gulp with sass
 -----------------------
 Before 'docker-compose build':
 1. Edit both _./docker/gulp/package.json_ and _./docker/gulp/gulpfile.js_ in order to fit them to your requirements
@@ -40,6 +38,15 @@ Default Gulp plugins (you can change it by editing _docker/gulp/gulpfile.js_)
 | gulp-postcss      | some usefeull actions gulp can do on compiled css,   |                                                                                                                                  
 | gulp-sourcemaps   | allow you to inspect scss files in browser inspector |   
 
+### install php extension without rebuild php container
+Let's install mysqli extension from inside the container:
+```
+docker-compose exec php bash
+docker-php-ext-install mysqli
+```
+### Dump sql database
+``` $ docker-compose exec db mysqldump -uusername -puserpassword dbname > backup.sql```
+
 
 FAQ
 ============
@@ -47,17 +54,7 @@ FAQ
 1. Check host ip addres from php container: `docker-compose exec php /sbin/ip route|awk '/default/ { print $3  }'`
 2. Edit web/app_dev.php, go to line 15 and replace 127.0.0.1 with host address from cmmand above
 
-Repeat this when you want to get access to _web/config.php_ script.
-
-#### I want to install php extension without rebuild php container
-Let's install mysqli extension from inside the container:
-```
-docker-compose exec php bash
-docker-php-ext-install mysqli
-```
-#### Dump sql database
-``` $ docker-compose exec db mysqldump -uusername -puserpassword dbname > backup.sql```
-
+Repeat this when you want to get access to _web/config.php_ script.ka
 ___
 
 Don't hesistate to create issue/feature request.
